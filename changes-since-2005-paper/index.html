@@ -14,7 +14,7 @@
 
   <link rel="stylesheet" href="../css/theme.css" />
   <link rel="stylesheet" href="../css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
   
   <script>
     // Current page data
@@ -25,9 +25,16 @@
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
   <script src="../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
-  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2SYBSJVZ23"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-2SYBSJVZ23');
+  </script>
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -41,7 +48,7 @@
         <a href=".." class="icon icon-home"> OBO Relation Ontology</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -84,6 +91,8 @@
                     <li class="toctree-l1"><a class="reference internal" href="../reflexivity/">Reflexivity</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../direct-and-indirect-relations/">Direct and Indirect Relations</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../process-relations/">Process relations</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../interaction-relations/">Interaction Relations</a>
                     </li>
@@ -160,6 +169,7 @@
   
   <hr/>
 </div>
+
           <div role="main">
             <div class="section">
               
@@ -181,7 +191,7 @@
 <h2 id="elimination-of-class-level-relationships">Elimination of class-level relationships</h2>
 <p>The original OBO_REL followed the Genome Biology paper in defining relations as class-level. However, these class-level relations caused a lot of confusion and are not really required - in OWL (and in OBO-Format, which is a subset of OWL) we have instance level relationships that are quantified (e.g. finger SubClassOf part_of <strong>some</strong> hand).</p>
 <p>RO makes a clean break with OBO_REL, and abandons class level relations.</p>
-<p>For a discussion of how RO aligns with OBO_REL in terms of temporal quantification, see <a href="ROAndTime">ROAndTime</a>.</p>
+<p>For a discussion of how RO aligns with OBO_REL in terms of temporal quantification, see <a href="temporal-semantics">temporal-semantics</a>.</p>
 <p>An exception is made for a small number of "macro" relations such as <a href="http://purl.obolibrary.org/obo/RO_0002161">RO_0002161</a> (never in taxon), which is modeled as an annotation property and expanded to a more complex OWL statement using an OWL macro expansion engine. See the OWL macros section of the obo format spec for more details</p>
 <h2 id="source-format">Source format</h2>
 <p>For OBO_REL, the source was obo-format, and OWL was derived from this. There was an experiment to use Common Logic Interchange Format as the source, but this was abandoned.</p>
@@ -222,17 +232,18 @@
   </div>
 
   <div class="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-      
-        <span><a href="../temporal-semantics/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../ro-and-chado/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../temporal-semantics/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../ro-and-chado/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
 </div>
     <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
     <script src="../js/theme.js" defer></script>
       <script src="../search/main.js" defer></script>
     <script defer>

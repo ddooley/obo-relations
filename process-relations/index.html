@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Process relations - OBO Relation Ontology</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Process relations";
+    var mkdocs_page_input_path = "process-relations.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2SYBSJVZ23"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-2SYBSJVZ23');
+  </script>
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> OBO Relation Ontology</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <p class="caption"><span class="caption-text">Basics</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../quickstart/">Quickstart</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../history/">History</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Guide</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../introduction/">Introduction</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../owl/">OWL Concepts</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../annotation-properties/">Annotation Properties</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../object-properties/">Object Properties</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../property-chains/">Property Chains</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../identifiers/">Identifiers</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../shortcut-relations/">Shortcut Relations</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../examples/">Examples</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../domain-or-range-specific-relation/">Domain and Ranges</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Design Patterns</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../design-patterns/">Design Patterns Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../reflexivity/">Reflexivity</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../direct-and-indirect-relations/">Direct and Indirect Relations</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Process relations</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#process-classes">Process Classes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#core-process-to-process-relationships">Core process-to-process relationships</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#process-part-wholes">Process part-wholes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#starts-and-ends">Starts and ends</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#overlaps">Overlaps</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#linking-processes-to-locations-in-which-they-occur">Linking processes to locations in which they occur</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#process-participation-relationships">Process-participation relationships</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#participation">Participation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#input-output-agent-triad">Input-Output-Agent triad</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#participation-axioms">Participation axioms</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#agents">Agents</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#participants-that-are-acted-upon">Participants that are acted upon</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#obi-inputoutput-relations">OBI input/output relations</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#other-process-relations">Other process relations</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../interaction-relations/">Interaction Relations</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Modules</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../modules/">Modules Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../ro-core/">RO Core</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../ro-neuro/">RO Neuron</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../causal-relations/">Causal Relations</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Links to other resources</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../mappings/">mappings</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Semantics</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../ro-and-bfo/">RO and BFO</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../temporal-semantics/">Temporal Semantics</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Legacy</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../changes-since-2005-paper/">Changes since 2005 paper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../ro-and-chado/">Chado Databases</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../ro-and-obo-format/">RO and OBO Format</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Contributing</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../editing-ro/">Editors guide</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">OBO Relation Ontology</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Design Patterns &raquo;</li>
+        
+      
+    
+    <li>Process relations</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="core-process-relations">Core Process Relations</h1>
+<p>This document walks us through a subset of the relations used in RO for modeling processes</p>
+<h2 id="process-classes">Process Classes</h2>
+<p>The most generic conception of process is</p>
+<ul>
+<li><a href="http://purl.obolibrary.org/obo/BFO_0000015">BFO:0000015 <em>process</em></a></li>
+</ul>
+<p>From BFO/COB. This captures processes in the general sense, as well as the notion of smaller individual "events"</p>
+<p>Some ontologies provide specific subclasses of this:</p>
+<ul>
+<li><a href="http://purl.obolibrary.org/obo/GO_0008150">GO:0008150 <em>biological_process</em></a></li>
+<li><a href="http://purl.obolibrary.org/obo/COB_0000082">COB:0000082 <em>planned process</em></a></li>
+</ul>
+<p>Some key ontologies or ontology branches that represent processes in OBO:</p>
+<ul>
+<li>The biological process and molecular activity branches of GO<ul>
+<li><a href="http://purl.obolibrary.org/obo/GO_0003674">GO:0003674 <em>molecular_function</em></a>  -- represents molecular activities</li>
+<li><a href="http://purl.obolibrary.org/obo/GO_0008150">GO:0008150 <em>biological_process</em></a></li>
+</ul>
+</li>
+<li>The planned process branch of OBI</li>
+<li>The environmental process branch of ENVO<ul>
+<li><a href="http://purl.obolibrary.org/obo/ENVO_02500000">ENVO:02500000 <em>environmental system process</em></a></li>
+</ul>
+</li>
+<li>Behaviors in NBO</li>
+</ul>
+<h2 id="core-process-to-process-relationships">Core process-to-process relationships</h2>
+<h3 id="process-part-wholes">Process part-wholes</h3>
+<p>Processes can be disassembled into sub-parts using the standard generic part-of/has-part relations in RO:</p>
+<ul>
+<li><a href="http://purl.obolibrary.org/obo/BFO_0000050">BFO:0000050 <em>part of</em></a></li>
+<li><a href="http://purl.obolibrary.org/obo/BFO_0000051">BFO:0000051 <em>has part</em></a></li>
+</ul>
+<p>These are inverses (please read the <a href="owl">OWL</a> intro to avoid common misconceptions about inverses)</p>
+<p>Note that these are generic relations that can also be used for
+material entities and other kinds of continuants. RO includes axioms
+that prevent partonomic crossings between these bipartite graphs. This
+means if you try and include an axiom:</p>
+<pre><code class="language-owl">EGFR-Protein part-of EGFR-Pathway
+</code></pre>
+<p>And these are subclasses of protein and biological process
+respectively, then you will get an unsatisfiable class when reasoning
+using a standard OWL reasoner (we encoded these in such a way these
+issues are revealed even when using performant reasoners like Elk).</p>
+<p>that RO also provides more specific relations:</p>
+<ul>
+<li><a href="http://purl.obolibrary.org/obo/RO_0002012">RO:0002012 <em>occurent part of</em></a></li>
+</ul>
+<p>However, be very careful using these, they are in some sense
+incompatible with the generic relations. This is because in OWL it is
+difficult to "infer downwards" a relation hierarchy.</p>
+<p>For this reason, we recommend using the generic relation, particularly
+when expressing logical definitions.</p>
+<p>It can help to think of processes as "4D entities" when mentally reasoning about parthood.</p>
+<p>Part-of includes both cases where one process is a "temporal slice" of another (e.g. execution phase of aptoptosis is part of apoptosis) and a "3D slice".</p>
+<h3 id="starts-and-ends">Starts and ends</h3>
+<p>The part relations have two sub-relations to indicate which processes start or end a process:</p>
+<ul>
+<li><a href="http://purl.obolibrary.org/obo/BFO_0000050">BFO:0000050 <em>part of</em></a><ul>
+<li><a href="http://purl.obolibrary.org/obo/RO_0002223">RO:0002223 <em>starts</em></a></li>
+<li><a href="http://purl.obolibrary.org/obo/RO_0002229">RO:0002229 <em>ends</em></a></li>
+</ul>
+</li>
+<li><a href="http://purl.obolibrary.org/obo/BFO_0000051">BFO:0000051 <em>has part</em></a><ul>
+<li><a href="http://purl.obolibrary.org/obo/RO_0002224">RO:0002224 <em>starts with</em></a></li>
+<li><a href="http://purl.obolibrary.org/obo/RO_0002230">RO:0002230 <em>ends with</em></a></li>
+</ul>
+</li>
+</ul>
+<p>Note these two hierarchies are inverses of each other.</p>
+<p>In the above indentation indicates subPropertyOf, i.e. the more
+specific relation entails the more general. If S starts P, then S is
+necessarily a part of P.</p>
+<p>the meaning of these can best be understood thinking in terms of a
+linear chain of processes. For example, the following simplification
+of a canonical life cycle of an organism, taken from Uberon:</p>
+<pre><code> &lt;----- life cycle of an organism -------------------&gt;
+ [zygote stage][2-cell stage] ... [adult stage][death]
+</code></pre>
+<p>In this conceptualization, the life cycle starts-with the zygote stage, and ends-with the death stage.</p>
+<p>Start and end relationship types can be very useful for design
+patterns for processes. For example, in GO, signaling pathways can be
+defined by the initiating molecular activity.</p>
+<p>In RO, all processes are considered to have starts and ends, even if
+we don't know them. Some processes may have fuzzy temporal boundaries,
+just as anatomical structures do. We can build some of this fuzziness
+into class descriptions, but the understanding is that instances
+always have a start and end.</p>
+<h3 id="overlaps">Overlaps</h3>
+<p>As with material entities, part-of and has-part both imply overlaps</p>
+<ul>
+<li><a href="http://purl.obolibrary.org/obo/RO_0002131">RO:0002131 <em>overlaps</em></a><ul>
+<li><a href="http://purl.obolibrary.org/obo/BFO_0000050">BFO:0000050 <em>part of</em></a></li>
+<li><a href="http://purl.obolibrary.org/obo/BFO_0000051">BFO:0000051 <em>has part</em></a></li>
+</ul>
+</li>
+</ul>
+<p>This may seem unintuitive at first, but makes sense as in RO (and
+standard mereology) "overlaps" means at least one part in common, and
+includes both "proper overlaps" as well as part-of, has-part, and
+sharing the identical block of space time.</p>
+<h2 id="linking-processes-to-locations-in-which-they-occur">Linking processes to locations in which they occur</h2>
+<p>the occurs in relation links processes to material entities (or immaterial ones, such as anatomical spaces) in which they occur</p>
+<ul>
+<li><a href="http://purl.obolibrary.org/obo/BFO_0000066">BFO:0000066 <em>occurs in</em></a></li>
+</ul>
+<p>RO includes a <a href="property chain">property-chain</a>:</p>
+<pre><code>occurs-in o part-of -&gt; occurs-in
+</code></pre>
+<p>i.e. if a process occurs in a location L1, and L1 is part-of L2, then that process also occurs in L2.</p>
+<p>For example, if a chemical reaction is happening in the lysosomal
+lumen, it is also happening in a lysosome, and also in a cell, and if
+that cell is in an organism, it is happening in that organism etc.</p>
+<p>For taxon reasoning purposes it is important to understand that this
+may cross organism boundaries, e.g. for symbionts inside a host.</p>
+<h2 id="process-participation-relationships">Process-participation relationships</h2>
+<p>Note that this section is a little wordier, as we are still working through some of the issues raised.</p>
+<h3 id="participation">Participation</h3>
+<p>RO includes a very general participation relation and its inverse</p>
+<ul>
+<li><a href="http://purl.obolibrary.org/obo/RO_0000056">RO:0000056 <em>participates in</em></a></li>
+<li><a href="http://purl.obolibrary.org/obo/RO_0000057">RO:0000057 <em>has participant</em></a></li>
+</ul>
+<p>these are often too general to be used to assert information
+directly. For this reason, we include sub-relations that indicate what
+the <em>role</em> of the partipant is in the relationship.</p>
+<p>That are different ways to slice and dice participants, but one of the
+most useful patterns is the IOA triad:</p>
+<h3 id="input-output-agent-triad">Input-Output-Agent triad</h3>
+<p>In this conceptualization, processes have participants that are broken
+down as to whether they are "agents" or "acted upon". The participants
+that are acted upon can be further broken down into inputs and
+outputs. We can think of the role classification as:</p>
+<ul>
+<li>agent</li>
+<li>acted upon</li>
+<li>input</li>
+<li>output</li>
+</ul>
+<p>This framework is useful for thinking about a number of different
+kinds of processes, both in the life sciences, and outside:</p>
+<ul>
+<li>chemical reactions, where the "agent" is the catalyst molecule</li>
+<li>industrial processes that refine raw materials into processes materials</li>
+<li>evolved biological processes such as biosynthesis and catabolism that are coordinated by the activities of gene products</li>
+<li>environmental processes such as erosion of geographic features over time, through the actions of other processes e.g. wind</li>
+<li>cooking a meal from ingredients</li>
+</ul>
+<p>In implementing this in RO there are a number of different choices:</p>
+<ul>
+<li>Do the participants have to be material entities?</li>
+<li>developmental process may have non-material entities such as cavities as inputs and outputs</li>
+<li>information processes may have information entities as inputs or outputs</li>
+<li>some processes may be conceived of in terms of changing characteristics - e.g. in changing the state or structure of an entity</li>
+<li>Does the input have to be present at the start of a process, and the output at the end?</li>
+<li>e.g. a biosynthetic process may have "intermediate inputs", chemicals that are fed in to a reaction in the middle</li>
+<li>Do particant relations propagate up or down the partonomy of the participants?</li>
+<li>if a manufacturing process makes a car, are the parts of the car also inputs?</li>
+<li>If a protein complex is the "agent" in a reaction, can the protein parts also be agents?</li>
+<li>Is anything consumed by a process an input, and anything produced an output?</li>
+<li>are by-products outputs?</li>
+<li>many biological processes produce/consume ADP/ATP, are these considered inputs/outputs, even if that is not the "focus" of the process?</li>
+</ul>
+<p>There are many valid ways to slice-and-dice this. RO implements this as follows:</p>
+<ul>
+<li><a href="http://purl.obolibrary.org/obo/RO_0000057">RO:0000057 <em>has participant</em></a><ul>
+<li>AGENT RELATIONS<ul>
+<li><a href="http://purl.obolibrary.org/obo/RO_0002333">RO:0002333 <em>enabled by</em></a></li>
+</ul>
+</li>
+<li>NON-AGENT RELATIONS<ul>
+<li><a href="http://purl.obolibrary.org/obo/RO_0002233">RO:0002233 <em>has input</em></a><ul>
+<li><a href="http://purl.obolibrary.org/obo/RO_0004009">RO:0004009 <em>has primary input</em></a></li>
+</ul>
+</li>
+<li><a href="http://purl.obolibrary.org/obo/RO_0002234">RO:0002234 <em>has output</em></a><ul>
+<li><a href="http://purl.obolibrary.org/obo/RO_0004008">RO:0004008 <em>has primary output</em></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Participation is then subdivided into agent and non-agent relations. (At this time there is not an actual grouping relation in RO but we show a grouping for illustrative purposes in the above).
+Non-agent relations are divided into inputs and outputs, and inputs/outputs can be further specified as being "primary", which is elucidated below.</p>
+<p>We are only showing a slice of the hierarchy, for simplicity. There is also a parallel set of inverses, not shown.</p>
+<p>Note that it is incorrect to assume the hierarchy aboves implies either disjointness or exhaustiveness.</p>
+<h3 id="participation-axioms">Participation axioms</h3>
+<p>Walking from the root, the most general notion is one of <em>participation</em>.</p>
+<p>Note this has the following <a href="property-chain">property-chain</a> axiom:</p>
+<pre><code>'has part' o 'has participant' SubPropertyOf: 'has participant'
+</code></pre>
+<p>This means that participants of part of a process are necessarily participants in the process:</p>
+<ul>
+<li>participants in the execution phase of apoptosis are also participants in apoptosis</li>
+<li>if a process of preparing food includes both chopping of vegetables as well as cooking, then participants in the chopping are participants in the overall process</li>
+<li>note there is no "bottoming out" to this chain. These particpants are also participants in the organisms' life and in the life of the universe</li>
+</ul>
+<p>Has participant also has constraining axioms:</p>
+<ul>
+<li>Domain: <a href="http://purl.obolibrary.org/obo/BFO_0000003">BFO:0000003 <em>occurrent</em></a></li>
+<li>Range: <a href="http://purl.obolibrary.org/obo/BFO_0000002">BFO:0000002 <em>continuant</em></a></li>
+</ul>
+<p>These are very high level BFO concepts. "occurrent" includes processes
+and other process-like things. "continuant" includes material entities
+(atoms, molecules, cellular and anatomical structures, organisms,
+planets) as well as immaterial (spaces and holes) and also
+characteristics (qualities, roles, states, functions, and
+information).</p>
+<p>Note that the core sub-relations above do not further constrain the range</p>
+<p>This means the following are consistent with the domain/range constraints:</p>
+<ul>
+<li>the process of running a computer program that has information as inputs and outputs</li>
+<li>a developmental process that has input two holes and has output one (i.e by eliminating a septum)</li>
+<li>a cellular process that has as input one state and output another state</li>
+</ul>
+<p>Individual ontologies may constrain usage further, but RO itself is permissive with these relations, allowing for a variety of scenarios.</p>
+<p>However, the following are not permitted:</p>
+<ul>
+<li>a process with another process as participant (instead use a different relation, such as a parthood or regulation relation)</li>
+<li>a material entity having a participant</li>
+</ul>
+<h3 id="agents">Agents</h3>
+<ul>
+<li><a href="http://purl.obolibrary.org/obo/RO_0000057">RO:0000057 <em>has participant</em></a><ul>
+<li>AGENT RELATIONS<ul>
+<li><a href="http://purl.obolibrary.org/obo/RO_0002333">RO:0002333 <em>enabled by</em></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>The first level divides participants into agent vs non-agent. See the
+original RO paper for discussion of has-agent. An agent can be thought
+of a participant that "carries out" a process.</p>
+<p>It may seem unusual to ascribe "purpose" in this way to non-sentient
+participants in a cellular process, for a discussion see <a href="https://pubmed.ncbi.nlm.nih.gov/27812932/">the chapter
+on Function from the GO
+handbook</a>. Even for
+processes that are neither evolved nor goal-driven such as earthquakes
+or natural erosion of coastlines, it can be useful to divide the
+participants into "drivers" and "driven".</p>
+<p>Currently the main agent relation is "enabled by", which is used by the GO for relating gene products and complexes to the molecular activities they catalyze, but is not restricted to pathway steps. See the <a href="https://pubmed.ncbi.nlm.nih.gov/31548717/">GO-CAM paper</a> for further elucidation on GO's usage.</p>
+<p>Enabled-by should only be used for participants that carry out the whole process</p>
+<ul>
+<li>for reactions, the molecule that catalyzes the reaction</li>
+<li>for a multi-reaction process with each step carried out by a different catalyst, the catalysts are <strong>not</strong> considered to enable the whole process</li>
+<li>if a complex carries out a process, then the individual complex components cannot do this unaided, then they are not considered enablers</li>
+<li>this case you can use a weaker relation: <a href="http://purl.obolibrary.org/obo/RO_0002326">RO:0002326 <em>contributes to</em></a></li>
+</ul>
+<h3 id="participants-that-are-acted-upon">Participants that are acted upon</h3>
+<ul>
+<li><a href="http://purl.obolibrary.org/obo/RO_0000057">RO:0000057 <em>has participant</em></a><ul>
+<li>NON-AGENT RELATIONS<ul>
+<li><a href="http://purl.obolibrary.org/obo/RO_0002233">RO:0002233 <em>has input</em></a></li>
+<li><a href="http://purl.obolibrary.org/obo/RO_0002234">RO:0002234 <em>has output</em></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>As currently modeled, for a participant to be an input, it must:</p>
+<ul>
+<li>be present at the start of the process</li>
+<li>be modified (including being broken down or destroyed) by the process</li>
+</ul>
+<p>For a participant to be an output, it must:</p>
+<ul>
+<li>be present at the end of the process</li>
+<li>not be present in the same state at the start of the process</li>
+</ul>
+<p>Although somewhat restrictive, this lumps together primary and secondary input/outputs. Consider a protein phosphorylation process:</p>
+<ul>
+<li><code>protein + ATP =&gt; a phosphoprotein + ADP</code></li>
+</ul>
+<p>With the hierarchy above, the two inputs (the protein and ATP) do not have distinguished roles, neither do the two outputs (the protein and ADP).</p>
+<p>While this is sufficient for a purely biochemical account, if we look
+instead from the perspectibe of evolved function, and the parts we
+care about from a signaling pathway perspective, we might want to
+model this as the kinase gene product/complex carrying out a process
+that is <strong>acting on</strong> the protein.</p>
+<ul>
+<li><a href="http://purl.obolibrary.org/obo/RO_0004009">RO:0004009 <em>has primary input</em></a></li>
+<li><a href="http://purl.obolibrary.org/obo/RO_0004008">RO:0004008 <em>has primary output</em></a></li>
+</ul>
+<p>The definitions primary input/output refer to the "goal" of the process, but this should not be understood to be reflecting some sentient goal (see <a href="https://pubmed.ncbi.nlm.nih.gov/27812932/">PMID:27812932</a>)</p>
+<h3 id="obi-inputoutput-relations">OBI input/output relations</h3>
+<p>Work is ongoing to reconcile the relations has-specified-input and has-specified-output in OBI with RO, see the tracker for details</p>
+<h2 id="other-process-relations">Other process relations</h2>
+<p>The summary above is intended to describe some of the key ways to model processes using RO design patterns. It is not exhaustive.</p>
+<p>Not covered here:</p>
+<ul>
+<li>causal relations between processes, including regulation</li>
+<li>patterns that describe how processes realize realizables</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../interaction-relations/" class="btn btn-neutral float-right" title="Interaction Relations">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../direct-and-indirect-relations/" class="btn btn-neutral" title="Direct and Indirect Relations"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../direct-and-indirect-relations/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../interaction-relations/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

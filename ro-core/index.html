@@ -14,7 +14,7 @@
 
   <link rel="stylesheet" href="../css/theme.css" />
   <link rel="stylesheet" href="../css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
   
   <script>
     // Current page data
@@ -25,9 +25,16 @@
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
   <script src="../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
-  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2SYBSJVZ23"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-2SYBSJVZ23');
+  </script>
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -41,7 +48,7 @@
         <a href=".." class="icon icon-home"> OBO Relation Ontology</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -85,6 +92,8 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../direct-and-indirect-relations/">Direct and Indirect Relations</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../process-relations/">Process relations</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../interaction-relations/">Interaction Relations</a>
                     </li>
                 </ul>
@@ -94,6 +103,8 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">RO Core</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#additional-notes">Additional Notes</a>
+    </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../ro-neuro/">RO Neuron</a>
@@ -160,6 +171,7 @@
   
   <hr/>
 </div>
+
           <div role="main">
             <div class="section">
               
@@ -169,6 +181,9 @@
 <p>RO Core imports a subset of classes from BFO 2.0, defines relations among them, and uses them for domain and range axioms. Every term in RO Core should have a textual definition and examples of usage. Since BFO is an upper-level ontology, not specific to biology, RO Core is also very general. The RO Core OWL file is available as a separate download from <a href="http://purl.obolibrary.org/obo/ro/core.owl">http://purl.obolibrary.org/obo/ro/core.owl</a>. A number of OBO ontologies import RO Core specifically, when they do not need the wider range of biological relations provided by RO.</p>
 <p><img alt="img" src="https://github.com/oborel/obo-relations/raw/master/docs/ROCore_Continuants.jpg" /></p>
 <p><img alt="img" src="https://github.com/oborel/obo-relations/raw/master/docs/ROCore_SDCs.jpg" /></p>
+<h2 id="additional-notes">Additional Notes</h2>
+<p>RO Core also diverges from BFO in that we do not include the BFO 'inheres in' relation. We instead have a relation <a href="http://purl.obolibrary.org/obo/RO_0000052">characteristic of</a>, which is in some aspects more general that inheres-in (it relaxes range constraints, such that things can be characteristics of processes), and in some aspects more specific than inheres-in (it restricts the relation to be functional).</p>
+<p>Note that the RO <a href="http://purl.obolibrary.org/obo/RO_0000052">characteristic of</a> used to be called 'inheres in', as it was originally modeled after the RO relation, but was renamed in 2021 to avoid confusion. See <a href="https://github.com/oborel/obo-relations/pulls/284">this pull request</a> for historic context.</p>
               
             </div>
           </div>
@@ -202,17 +217,18 @@
   </div>
 
   <div class="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-      
-        <span><a href="../modules/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../ro-neuro/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../modules/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../ro-neuro/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
 </div>
     <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
     <script src="../js/theme.js" defer></script>
       <script src="../search/main.js" defer></script>
     <script defer>
